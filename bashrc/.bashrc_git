@@ -1,11 +1,12 @@
 # Configure colors, if available.
+
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    c_reset='\[\e[0m\]'
-    c_user='\[\e[0;32m\]'
-    c_path='\[\e[1;34m\]'
-    c_git_clean='\[\e[0;37m\]'
-    c_git_staged='\[\e[0;32m\]'
-    c_git_unstaged='\[\e[0;31m\]'
+    c_user=$c_green
+    c_path=$c_cyan
+    c_host=$c_purple
+    c_git_clean=$c_light_grey
+    c_git_staged=$c_green
+    c_git_unstaged=$c_red
 else
     c_reset=
     c_user=
@@ -56,7 +57,7 @@ git_prompt ()
 
 path="${c_path}\w${c_reset}"
 user="${c_user}\u${c_reset}"
-host="${c_user}\h${c_reset}"
-prompt="${path} \$(git_prompt) \n[${user}@${host}\$ "
+host="${c_host}\h${c_reset}"
+prompt="${path} \$(git_prompt) \n[${user}@${host}]\$ "
 PROMPT_COMMAND="$TITLEBAR PS1=\"${prompt}\" ;"
 

@@ -32,3 +32,23 @@ alias bye='exit'
 # super helpful shortcut to execute previous command
 alias r='fc -s'
 
+#
+# Color options
+#
+c_reset='\[\e[0m\]'
+c_black='\[\e[0;30m\]'
+c_dark_grey='\[\e[1;30m\]'
+c_blue='\[\e[0;34m\]'
+c_light_blue='\[\e[1;34m\]'
+c_green='\[\e[0;32m\]'
+c_light_green='\[\e[1;32m\]'
+c_cyan='\[\e[0;36m\]'
+c_light_cyan='\[\e[1;36m\]'
+c_red='\[\e[0;31m\]'
+c_light_red='\[\e[1;31m\]'
+c_purple='\[\e[0;35m\]'
+c_light_purple='\[\e[1;35m\]'
+c_brown='\[\e[0;33m\]'
+c_yellow='\[\e[1;33m\]'
+c_light_grey='\[\e[0;37m\]'
+c_white='\[\e[1;37m\]'

@@ -1,0 +1,89 @@
+#!/bin/bash
+
+#
+# This script is designed to allow you to fetch changes from an
+# upstream/master branch on a remote repository (identified by 'upstream')
+# and apply those changes to a local master branch, without having to
+# check out the master branch
+#
+# If you put this script in bin (on your PATH), you can call it as:
+# git upm
+#
+# This script was modified from the one found at:
+# http://stackoverflow.com/questions/4156957/merging-branches-without-checkout.
+#
+
+_print() {
+    echo -ne "$1" 1>&2
+}
+
+_usage() {
+    echo "Usage: git upm  <or>  git-upm" 1>&2
+    exit 1
+}
+
+_merge_ff() {
+    master="$1"
+    upstream="$2"
+    master_ref="refs/heads/$master"
+    upstream_ref="refs/remotes/$upstream"
+    upstream_orig_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
+    if [ $? -ne 0 ]; then
+        _print "upm: Error: unknown branch refs/remotes/$upstream"
+        _usage
+    fi
+
+    _print "upm: Fetching upstream ..."
+    git fetch upstream
+    upstream_new_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
+    if [ "$upstream_new_hash" == "$upstream_orig_hash" ]; then
+        _print "upm: Upstream is already up-to-date "
+        _print "at ${upstream_new_hash:0:7}\n"
+    else
+        _print "upm: Upstream changed from "
+        _print "${upstream_orig_hash:0:7} to ${upstream_new_hash:0:7}\n"
+    fi
+
+    master_orig_hash="$(git show-ref -s --verify $master_ref 2> /dev/null)"
+    if [ $? -ne 0 ]; then
+        _print "upm: Error: unknown branch $master\n"
+        _usage
+    fi
+
+    if [ "$master_orig_hash" == "$upstream_new_hash" ]; then
+        _print "upm: $master is up-to-date at ${master_orig_hash:0:7}\n"
+    else
+        temp_hash="$(git merge-base $master_orig_has $upstream_new_hash)"
+        if [ "$temp_hash" != "$master_orig_hash" ]; then
+            _print -ne "upm: Error: merging $upstream into $master "
+            _print -ne "would not be a fast-forward\n"
+            exit 1
+        fi
+        _print "upm: Updating ${master} "
+        _print "${master_orig_hash:0:7}..${upstream_new_hash:0:7}\n"
+        msg="merge $upstream: Fast forward"
+        new="$upstream_new_hash"
+        orig="$master_orig_hash"
+        if git update-ref -m "$msg" "$master_ref" "$new" "$orig"; then
+            if [ -z $quiet ]; then
+                _print "upm: Fast forward\n"
+                git diff --stat "$master@{1}" "$master"
+            fi
+        else
+            _print "upm: Error: fast forward using update-ref failed\n"
+        fi
+    fi
+}
+
+while getopts "q" opt; do
+    case $opt in
+        q ) quiet="-q";;
+        * ) ;;
+    esac
+done
+shift $((OPTIND-1))
+
+case $# in
+    0 ) _merge_ff "master" "upstream/master";;
+    * ) _usage
+esac

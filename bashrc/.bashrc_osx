@@ -1,0 +1,8 @@
+# The OSX specific stuff
+
+# nice ls format
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+alias ls='ls -F'
+alias ll='ls -al'
+

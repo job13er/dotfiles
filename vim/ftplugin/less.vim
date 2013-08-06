@@ -1,0 +1,2 @@
+
+map rd :redraw!<cr>

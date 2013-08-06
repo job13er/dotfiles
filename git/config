@@ -1,0 +1,36 @@
+[user]
+    name = "Adam Meadows"
+    email = "adam.meadows@gmail.com"
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = magenta bold
+    frag = cyan bold
+    old = red
+    new = green
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+
+[alias]
+    ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ci%Creset\n %s %C(cyan)%d%Creset\n'
+    s = status -sb
+    st = status
+
+[core]
+    editor = vim
+
+[annex]
+    alwayscommit = false

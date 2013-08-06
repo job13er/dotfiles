@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find . -name \*.py | xargs grep --color -F "$*"
+

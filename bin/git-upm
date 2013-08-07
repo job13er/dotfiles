@@ -33,7 +33,7 @@ _merge_ff() {
         _usage
     fi
 
-    _print "upm: Fetching upstream ..."
+    _print "upm: Fetching upstream ...\n"
     git fetch upstream
     upstream_new_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
     if [ "$upstream_new_hash" == "$upstream_orig_hash" ]; then
@@ -53,7 +53,7 @@ _merge_ff() {
     if [ "$master_orig_hash" == "$upstream_new_hash" ]; then
         _print "upm: $master is up-to-date at ${master_orig_hash:0:7}\n"
     else
-        temp_hash="$(git merge-base $master_orig_has $upstream_new_hash)"
+        temp_hash="$(git merge-base $master_orig_hash $upstream_new_hash)"
         if [ "$temp_hash" != "$master_orig_hash" ]; then
             _print -ne "upm: Error: merging $upstream into $master "
             _print -ne "would not be a fast-forward\n"
@@ -67,7 +67,7 @@ _merge_ff() {
         if git update-ref -m "$msg" "$master_ref" "$new" "$orig"; then
             if [ -z $quiet ]; then
                 _print "upm: Fast forward\n"
-                git diff --stat "$master@{1}" "$master"
+                git --no-pager diff --stat "$master@{1}" "$master"
             fi
         else
             _print "upm: Error: fast forward using update-ref failed\n"

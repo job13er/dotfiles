@@ -24,7 +24,16 @@ alias cl='clear'
 #
 # Handy grep functions
 #
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SOURCE="${BASH_SOURCE[0]}"
+# resolve $SOURCE until the file is no longer a symlink
+while [ -h "$SOURCE" ]; do
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    # if $SOURCE was a relative symlink, resolve it
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+
 source ${DIR}/.bashrc_grep
 
 # make everything prompt

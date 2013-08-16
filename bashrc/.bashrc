@@ -21,6 +21,24 @@ alias openkp='keepassx ~/Dropbox/KP/Database.kdb &'
 # Aliases
 alias cl='clear'
 
+#
+# Handy grep functions
+#
+
+# recursive grep
+function rgrep () {
+    grep -ri --color "$*" .
+}
+
+# grep by filetype
+function ftgrep () {
+    grep -ri --color --include=*.$1 "${*:2}" .
+}
+
+function pygrep () {
+    ftgrep py "$@"
+}
+
 # make everything prompt
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'

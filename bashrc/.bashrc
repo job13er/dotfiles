@@ -24,20 +24,8 @@ alias cl='clear'
 #
 # Handy grep functions
 #
-
-# recursive grep
-function rgrep () {
-    grep -ri --color "$*" .
-}
-
-# grep by filetype
-function ftgrep () {
-    grep -ri --color --include=*.$1 "${*:2}" .
-}
-
-function pygrep () {
-    ftgrep py "$@"
-}
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source ${DIR}/.bashrc_grep
 
 # make everything prompt
 alias cp='/bin/cp -i'

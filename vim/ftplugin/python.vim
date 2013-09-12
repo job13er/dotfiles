@@ -10,3 +10,5 @@ setlocal commentstring=\ #\ %s
 let python_highlight_all=1
 map run :w<cr> :!python %<cr>
 
+let max_width=$MAX_WIDTH
+execute "let g:flake8_max_line_length=".max_width

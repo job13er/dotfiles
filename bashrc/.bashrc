@@ -21,6 +21,21 @@ alias openkp='keepassx ~/Dropbox/KP/Database.kdb &'
 # Aliases
 alias cl='clear'
 
+#
+# Handy grep functions
+#
+SOURCE="${BASH_SOURCE[0]}"
+# resolve $SOURCE until the file is no longer a symlink
+while [ -h "$SOURCE" ]; do
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    # if $SOURCE was a relative symlink, resolve it
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+
+source ${DIR}/.bashrc_grep
+
 # make everything prompt
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'

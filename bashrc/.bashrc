@@ -13,7 +13,14 @@ export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # shortcut to calculate python coverage
-function pycov() { python-coverage run "$@"; python-coverage report --show-missing; }
+function pycov() {
+    if [ ! -z "`which coverage`" ]
+    then
+        coverage run "$@"; coverage report --show-missing;
+    else
+        python-coverage run "$@"; python-coverage report --show-missing;
+    fi
+}
 
 # Open up keepassx
 alias openkp='keepassx ~/Dropbox/KP/Database.kdb &'

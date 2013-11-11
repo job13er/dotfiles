@@ -51,6 +51,10 @@ match ExtraWhitespace /\s\+$/
 " Compile LessCSS on save
 autocmd BufWritePost,FileWritePost *.less :silent !lessc -x <afile> <afile>:p:r.css
 
+" Strip trailing whitespace on save for some filetypes
+autocmd FileType c,cpp,python,javascript,htmldjango,less,css
+    \ autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " File extension associations
 au BufRead,BufNewFile *.pyt set filetype=python
 au BufRead,BufNewFile *.jst set filetype=javascript

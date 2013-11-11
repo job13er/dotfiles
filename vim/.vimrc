@@ -52,7 +52,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWritePost,FileWritePost *.less :silent !lessc -x <afile> <afile>:p:r.css
 
 " Strip trailing whitespace on save for some filetypes
-autocmd FileType c,cpp,python,javascript,htmldjango,less,css
+autocmd FileType c,cpp,python,javascript,htmldjango,less,css,make
     \ autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " File extension associations

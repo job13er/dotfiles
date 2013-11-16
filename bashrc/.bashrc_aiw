@@ -1,0 +1,3 @@
+# BASH aliases for all-i-want
+AIW_DIR=~/Documents/dev/personal/all-i-want
+alias goaiw="cd $AIW_DIR && v.switch all-i-want && . env.sh"

@@ -15,8 +15,6 @@ set commentstring=\ #\ %s
 set clipboard=unnamedplus
 set hls
 
-" Allow scrolling with the mouse (just in case)
-set mouse=a
 colorscheme desert
 
 call pathogen#infect()

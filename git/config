@@ -28,6 +28,8 @@
     ls = log --pretty=format:'%C(magenta)%h%Creset %C(yellow)%aN%Creset %C(green)%aE%Creset %C(dim)%ci%Creset\n %s %C(cyan)%d%Creset\n'
     s = status -sb
     st = status
+    du = diff
+    ds = diff --cached
 
 [core]
     editor = vim

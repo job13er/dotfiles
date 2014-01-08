@@ -7,7 +7,10 @@ export PATH
 export EDITOR=vim
 
 export HTML_TABS=2
-export MAX_WIDTH=79
+export JS_TABS=4
+export MAX_WIDTH=120
+export MAX_PY_WIDTH=$MAX_WIDTH
+export MAX_JS_WIDTH=$MAX_WIDTH
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8

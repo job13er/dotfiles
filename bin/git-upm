@@ -22,6 +22,11 @@ _usage() {
     exit 1
 }
 
+_not_from_master() {
+    echo "WARNING: this command should not be run from the 'master' branch"
+    exit 2
+}
+
 _merge_ff() {
     master="$1"
     upstream="$2"
@@ -29,24 +34,19 @@ _merge_ff() {
     upstream_ref="refs/remotes/$upstream"
     upstream_orig_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
     if [ $? -ne 0 ]; then
-        _print "upm: Error: unknown branch refs/remotes/$upstream"
+        _print "upm: WARN: unknown branch refs/remotes/$upstream"
         _usage
     fi
 
-    _print "upm: Fetching upstream ...\n"
-    git fetch upstream
     upstream_new_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
-    if [ "$upstream_new_hash" == "$upstream_orig_hash" ]; then
-        _print "upm: Upstream is already up-to-date "
-        _print "at ${upstream_new_hash:0:7}\n"
-    else
+    if [ "$upstream_new_hash" != "$upstream_orig_hash" ]; then
         _print "upm: Upstream changed from "
         _print "${upstream_orig_hash:0:7} to ${upstream_new_hash:0:7}\n"
     fi
 
     master_orig_hash="$(git show-ref -s --verify $master_ref 2> /dev/null)"
     if [ $? -ne 0 ]; then
-        _print "upm: Error: unknown branch $master\n"
+        _print "upm: WARN: unknown branch $master\n"
         _usage
     fi
 
@@ -55,9 +55,9 @@ _merge_ff() {
     else
         temp_hash="$(git merge-base $master_orig_hash $upstream_new_hash)"
         if [ "$temp_hash" != "$master_orig_hash" ]; then
-            _print -ne "upm: Error: merging $upstream into $master "
-            _print -ne "would not be a fast-forward\n"
-            exit 1
+            _print "upm: WARN: merging $upstream into $master "
+            _print "would not be a fast-forward\n"
+            return 1
         fi
         _print "upm: Updating ${master} "
         _print "${master_orig_hash:0:7}..${upstream_new_hash:0:7}\n"
@@ -70,9 +70,24 @@ _merge_ff() {
                 git --no-pager diff --stat "$master@{1}" "$master"
             fi
         else
-            _print "upm: Error: fast forward using update-ref failed\n"
+            _print "upm: WARN: fast forward using update-ref failed\n"
         fi
     fi
+}
+
+_for_each_head() {
+    _print "upm: Fetching upstream ...\n"
+    git fetch upstream
+    heads=$(git for-each-ref refs/heads --format="%(refname:short)")
+    for head in ${heads}
+    do
+        git show-ref -q upstream/$head
+        EC=$?
+        if [ "$EC" == "0" ]; then
+            _merge_ff $head upstream/$head
+        fi
+    done
+
 }
 
 while getopts "q" opt; do
@@ -83,7 +98,12 @@ while getopts "q" opt; do
 done
 shift $((OPTIND-1))
 
+if [ $(git rev-parse --abbrev-ref HEAD) == "master" ]; then
+    _not_from_master
+fi
+
 case $# in
-    0 ) _merge_ff "master" "upstream/master";;
+    0 ) _for_each_head;;
     * ) _usage
 esac
+

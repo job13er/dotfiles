@@ -20,5 +20,5 @@ execute "set cc=".max_width
 let g:flake8_ignore="W391"
 
 " configure builtins for flake8-vim
-let builtins=$FLAKE8_BUILTINS
-execute "let g:flake8_builtins=".builtins
+"let builtins=$FLAKE8_BUILTINS
+"execute "let g:flake8_builtins=".builtins

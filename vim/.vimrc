@@ -54,6 +54,7 @@ function LessToCss()
         let command = "silent !lessc -x " . src . " " . dst . ".css"
         execute command
     endif
+endfunction
 
 autocmd BufWritePost,FileWritePost *.less call LessToCss()
 

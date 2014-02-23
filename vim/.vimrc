@@ -59,7 +59,7 @@ endfunction
 autocmd BufWritePost,FileWritePost *.less call LessToCss()
 
 " Strip trailing whitespace on save for some filetypes
-autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json
+autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade
     \ autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " File extension associations

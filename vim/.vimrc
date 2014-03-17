@@ -1,3 +1,18 @@
+set nocompatible        " be iMproved, required
+filetype off            " required
+
+" set the rutnime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let vundle manager Vundle, required
+Bundle 'gmarik/vundle'
+
+" Bundle commands
+Bundle 'kien/ctrlp.vim.git'
+
+filetype plugin indent on   " required
+
 set encoding=utf-8
 set paste
 set expandtab
@@ -17,7 +32,7 @@ set hls
 
 colorscheme desert
 
-call pathogen#infect()
+"call pathogen#infect()
 syntax on
 filetype plugin indent on
 

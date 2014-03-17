@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 " Bundle commands
 Bundle 'kien/ctrlp.vim.git'
+Bundle 'scrooloose/syntastic.git'
 
 filetype plugin indent on   " required
 
@@ -32,9 +33,7 @@ set hls
 
 colorscheme desert
 
-"call pathogen#infect()
 syntax on
-filetype plugin indent on
 
 let &titlestring = expand("%:p") . ": (" . hostname() . ")"
 if &term == "screen"

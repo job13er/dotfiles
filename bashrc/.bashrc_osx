@@ -17,4 +17,4 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 alias ls='ls -F'
 alias ll='ls -al'
-
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'

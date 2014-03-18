@@ -10,7 +10,8 @@ Bundle 'gmarik/vundle'
 
 " Bundle commands
 Bundle 'kien/ctrlp.vim.git'
-Bundle 'scrooloose/syntastic.git'
+"Bundle 'scrooloose/syntastic.git'
+Bundle 'groenewege/vim-less.git'
 
 filetype plugin indent on   " required
 

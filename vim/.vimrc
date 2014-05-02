@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 "Bundle 'kien/ctrlp.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'groenewege/vim-less.git'
+Bundle 'digitaltoad/vim-jade.git'
 
 filetype plugin indent on   " required
 

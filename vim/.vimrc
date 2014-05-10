@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'digitaltoad/vim-jade.git'
+Bundle 'jtratner/vim-flavored-markdown.git'
 
 filetype plugin indent on   " required
 
@@ -85,4 +86,4 @@ au BufRead,BufNewFile *.tmpl set filetype=htmldjango
 au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
-
+au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown

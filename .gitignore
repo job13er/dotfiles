@@ -1,5 +1,3 @@
 vim/.netrwhist
-vim/bundle/ctrlp.vim
-vim/bundle/syntastic
-vim/bundle/vim-less
-vim/bundle/vim-jade
+vim/bundle/*
+!vim/bundle/vundle

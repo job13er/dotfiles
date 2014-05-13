@@ -14,6 +14,7 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'digitaltoad/vim-jade.git'
 Bundle 'jtratner/vim-flavored-markdown.git'
+Bundle 'hail2u/vim-css3-syntax.git'
 
 filetype plugin indent on   " required
 

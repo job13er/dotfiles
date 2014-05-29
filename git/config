@@ -30,6 +30,9 @@
     st = status
     du = diff
     ds = diff --cached
+    co = checkout
+    ci = commit
+    rb = rebase
 
 [core]
     editor = vim

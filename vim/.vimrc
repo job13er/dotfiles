@@ -15,6 +15,7 @@ Bundle 'groenewege/vim-less.git'
 Bundle 'digitaltoad/vim-jade.git'
 Bundle 'jtratner/vim-flavored-markdown.git'
 Bundle 'hail2u/vim-css3-syntax.git'
+Bundle 'saltstack/salt-vim.git'
 
 filetype plugin indent on   " required
 

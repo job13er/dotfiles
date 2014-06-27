@@ -89,3 +89,6 @@ au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
+
+" Syntastic options
+let g:syntastic_javascript_checkers = ['eslint']

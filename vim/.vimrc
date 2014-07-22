@@ -92,3 +92,8 @@ au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 
 " Syntastic options
 let g:syntastic_javascript_checkers = ['eslint']
+
+let eslint_rules_dir=$ESLINT_RULES_DIR
+if eslint_rules_dir != ""
+    execute "let g:syntastic_javascript_eslint_args=' --rulesdir ".eslint_rules_dir."'"
+endif

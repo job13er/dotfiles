@@ -6,7 +6,7 @@ export PATH
 # use VIM for EDITOR
 export EDITOR=vim
 
-export HTML_TABS=2
+export HTML_TABS=4
 export JS_TABS=4
 export MAX_WIDTH=120
 export MAX_PY_WIDTH=$MAX_WIDTH

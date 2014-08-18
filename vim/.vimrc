@@ -9,13 +9,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundle commands
-"Bundle 'kien/ctrlp.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'digitaltoad/vim-jade.git'
 Bundle 'jtratner/vim-flavored-markdown.git'
 Bundle 'hail2u/vim-css3-syntax.git'
 Bundle 'saltstack/salt-vim.git'
+Bundle 'elzr/vim-json.git'
 
 filetype plugin indent on   " required
 
@@ -86,6 +86,7 @@ au BufRead,BufNewFile *.pyt set filetype=python
 au BufRead,BufNewFile *.jst set filetype=javascript
 au BufRead,BufNewFile *.tmpl set filetype=htmldjango
 au BufRead,BufNewFile *.html set filetype=htmldjango
+au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown

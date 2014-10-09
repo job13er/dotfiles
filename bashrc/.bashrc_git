@@ -55,9 +55,20 @@ git_prompt ()
     echo "(${git_color}$GIT_BRANCH${c_reset})"
 }
 
+# Not really the right place for it, but mixing in virtualenv path mods here too
+venv_prompt ()
+{
+    if [ ! -z "$VIRTUAL_ENV" ]
+    then
+        echo "(${c_host}`basename $VIRTUAL_ENV`${c_reset}) "
+    else
+        echo ""
+    fi
+}
+
 path="${c_path}\w${c_reset}"
 user="${c_user}\u${c_reset}"
 host="${c_host}\h${c_reset}"
-prompt="${path} \$(git_prompt) \n[${user}@${host}]\$ "
+prompt="\$(venv_prompt)${path} \$(git_prompt) \n[${user}@${host}]\$ "
 PROMPT_COMMAND="$TITLEBAR PS1=\"${prompt}\" ;"
 

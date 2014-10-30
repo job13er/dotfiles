@@ -16,6 +16,7 @@ Bundle 'jtratner/vim-flavored-markdown.git'
 Bundle 'hail2u/vim-css3-syntax.git'
 Bundle 'saltstack/salt-vim.git'
 Bundle 'elzr/vim-json.git'
+Bundle 'airblade/vim-gitgutter.git'
 
 filetype plugin indent on   " required
 
@@ -35,6 +36,7 @@ set wildmode=longest:full,list:full
 set commentstring=\ #\ %s
 set clipboard=unnamedplus
 set hls
+set nu
 
 colorscheme desert
 
@@ -93,6 +95,8 @@ au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 
 " Syntastic options
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 
 let eslint_rules_dir=$ESLINT_RULES_DIR
 if eslint_rules_dir != ""

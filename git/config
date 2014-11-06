@@ -1,6 +1,6 @@
 [user]
-    name = "Adam Meadows"
-    email = "adam.meadows@gmail.com"
+	name = Adam Meadows
+	email = adam.meadows@gmail.com
 
 [color]
     branch = auto
@@ -36,6 +36,3 @@
 
 [core]
     editor = vim
-
-[annex]
-    alwayscommit = false

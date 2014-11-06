@@ -1,2 +1,1 @@
 [ -s "${HOME}/.nvm/nvm.sh" ] && . "${HOME}/.nvm/nvm.sh" # This loads nvm
-nvm use # load latest version of node (respecting .nvmrc)

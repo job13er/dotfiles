@@ -34,7 +34,7 @@ set ruler
 set wildmenu
 set wildmode=longest:full,list:full
 set commentstring=\ #\ %s
-set clipboard=unnamedplus
+set clipboard=unnamed
 set hls
 set nu
 

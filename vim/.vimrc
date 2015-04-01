@@ -9,14 +9,16 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundle commands
-Bundle 'scrooloose/syntastic.git'
-Bundle 'groenewege/vim-less.git'
-Bundle 'digitaltoad/vim-jade.git'
-Bundle 'jtratner/vim-flavored-markdown.git'
-Bundle 'hail2u/vim-css3-syntax.git'
-Bundle 'saltstack/salt-vim.git'
-Bundle 'elzr/vim-json.git'
-Bundle 'airblade/vim-gitgutter.git'
+Bundle 'scrooloose/syntastic'
+Bundle 'groenewege/vim-less'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'saltstack/salt-vim'
+Bundle 'elzr/vim-json'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 
 filetype plugin indent on   " required
 
@@ -91,7 +93,7 @@ au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
-au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
+au BufRead,BufNewFile *.md,*.markdown set filetype=markdown
 
 " Syntastic options
 let g:syntastic_javascript_checkers = ['eslint']

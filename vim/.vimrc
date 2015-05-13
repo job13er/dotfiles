@@ -62,6 +62,8 @@ nmap <silent> <c-l> :wincmd l<CR>
 " Highlight some relevant columns
 let max_width=$MAX_WIDTH
 execute "set cc=".max_width
+let text_width=max_width - 1
+execute "set textwidth=".text_width
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " Show me extra whitespace
@@ -85,6 +87,14 @@ au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=markdown
+
+" Custom status line
+set laststatus=2            " Always show status line
+set statusline=%f           " file path from CWD
+set statusline+=\           " blank space
+set statusline+=%l          " Current line
+set statusline+=/           " Separator
+set statusline+=%L          " Total lines
 
 " Syntastic options
 let g:syntastic_javascript_checkers = ['eslint']

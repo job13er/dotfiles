@@ -68,22 +68,13 @@ hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
-
-" Compile LessCSS on save
-function LessToCss()
-    let src = shellescape(expand('%:p'))
-    if src !~ "_"
-        let dst = shellescape(expand('%:r'))
-        let command = "silent !lessc -x " . src . " " . dst . ".css"
-        execute command
-    endif
-endfunction
-
-"autocmd BufWritePost,FileWritePost *.less call LessToCss()
-
 " Strip trailing whitespace on save for some filetypes
-autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade
+autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade,markdown
     \ autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" spell-check markdown and git commits
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
 
 " File extension associations
 au BufRead,BufNewFile *.pyt set filetype=python

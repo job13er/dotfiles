@@ -92,9 +92,21 @@ au BufRead,BufNewFile *.md,*.markdown set filetype=markdown
 set laststatus=2            " Always show status line
 set statusline=%f           " file path from CWD
 set statusline+=\           " blank space
-set statusline+=%l          " Current line
-set statusline+=/           " Separator
-set statusline+=%L          " Total lines
+"set statusline+=%l          " Current line
+"set statusline+=/           " Separator
+"set statusline+=%L          " Total lines
+
+"set statusline=%t       "tail of the filename
+"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
 
 " Syntastic options
 let g:syntastic_javascript_checkers = ['eslint']

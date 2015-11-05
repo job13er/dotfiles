@@ -7,27 +7,14 @@ export PATH
 export EDITOR=vim
 
 export HTML_TABS=4
-export JSON_TABS=4
-export JS_TABS=4
+export JSON_TABS=2
+export JS_TABS=2
 export MAX_WIDTH=120
 export MAX_PY_WIDTH=$MAX_WIDTH
 export MAX_JS_WIDTH=$MAX_WIDTH
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
-# shortcut to calculate python coverage
-function pycov() {
-    if [ ! -z "`which coverage`" ]
-    then
-        coverage run "$@"; coverage report --show-missing;
-    else
-        python-coverage run "$@"; python-coverage report --show-missing;
-    fi
-}
-
-# Open up keepassx
-alias openkp='keepassx ~/Dropbox/KP/Database.kdb &'
 
 # Aliases
 alias cl='clear'

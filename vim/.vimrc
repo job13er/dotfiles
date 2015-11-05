@@ -19,6 +19,7 @@ Bundle 'elzr/vim-json'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
+Bundle 'leafgarland/typescript-vim'
 
 filetype plugin indent on   " required
 
@@ -87,6 +88,7 @@ au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=markdown
+au BufRead,BufNewFile *.tsx set filetype=typescript
 
 " Custom status line
 set laststatus=2            " Always show status line
@@ -103,17 +105,26 @@ set statusline+=%h      "help file flag
 set statusline+=%m      "modified flag
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
 " Syntastic options
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 
 let eslint_rules_dir=$ESLINT_RULES_DIR
 if eslint_rules_dir != ""
     execute "let g:syntastic_javascript_eslint_args=' --rulesdir ".eslint_rules_dir."'"
 endif
+
+let frost_proj_root=$FROST_PROJECT_ROOT
+if frost_proj_root != ""
+    let g:syntastic_typescript_checkers = ['tsc', 'tslint']
+    execute "let g:syntastic_typescript_tsc_args='--jsx react --module commonjs --noEmit ".frost_proj_root."/typings/tsd.d.ts'"
+endif
+"let g:syntastic_debug = 3

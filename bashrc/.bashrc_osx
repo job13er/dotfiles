@@ -23,3 +23,6 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 alias ls='ls -F'
 alias ll='ls -al'
+
+# Stop complaining about too many open files
+ulimit -n 1024

@@ -72,7 +72,7 @@ hi ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
 " Strip trailing whitespace on save for some filetypes
-autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade,markdown
+autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade,markdown,ghmarkdown
     \ autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " spell-check markdown and git commits
@@ -87,7 +87,7 @@ au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
-au BufRead,BufNewFile *.md,*.markdown set filetype=markdown
+au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
 
 " Custom status line
@@ -125,6 +125,9 @@ endif
 let frost_proj_root=$FROST_PROJECT_ROOT
 if frost_proj_root != ""
     let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-    execute "let g:syntastic_typescript_tsc_args='--jsx react --module commonjs --noEmit ".frost_proj_root."/typings/tsd.d.ts'"
+    execute "let g:syntastic_typescript_tsc_exec='".frost_proj_root."/node_modules/.bin/tsc'"
+    execute "let g:syntastic_typescript_tsc_args='--jsx react --moduleResolution node -t es6 --noEmit ".frost_proj_root."/typings/tsd.d.ts'"
+    execute "let g:syntastic_typescript_tslint_exec='".frost_proj_root."/node_modules/.bin/tslint'"
+    execute "let g:syntastic_javascript_eslint_exec='".frost_proj_root."/node_modules/.bin/eslint'"
 endif
 "let g:syntastic_debug = 3

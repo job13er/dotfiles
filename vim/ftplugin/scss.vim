@@ -1,4 +1,4 @@
-" JSON specific rules
+" SCSS specific rules
 
 let tabsize=$JSON_TABS
 execute "setlocal tabstop=".tabsize

@@ -1,0 +1,23 @@
+# prompt function for displaying what nodeenv version you're in
+nodeenv_prompt ()
+{
+    if [ ! -z "$NODE_VIRTUAL_ENV" ]
+    then
+        echo "(${c_purple}node@`basename $NODE_VIRTUAL_ENV`${c_reset}) "
+    else
+        echo ""
+    fi
+}
+
+NODE_ENV_DIR=~/Documents/dev/node-envs
+
+function vnode () {
+    . ${NODE_ENV_DIR}/$1/bin/activate
+}
+
+_vnode_complete() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "`/bin/ls ${NODE_ENV_DIR}`" -- $cur) )
+}
+
+complete -F _vnode_complete vnode

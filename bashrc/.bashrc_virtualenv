@@ -5,6 +5,17 @@
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# Prompt function for displaying the virtualenv you're in
+venv_prompt ()
+{
+    if [ ! -z "$VIRTUAL_ENV" ]
+    then
+        echo "(${c_yellow}`basename $VIRTUAL_ENV`${c_reset}) "
+    else
+        echo ""
+    fi
+}
+
 # virtualenv aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 alias v='workon'

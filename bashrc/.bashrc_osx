@@ -26,3 +26,6 @@ alias ll='ls -al'
 
 # Stop complaining about too many open files
 ulimit -n 1024
+
+# Speed up a slowly launching Terminal/iTerm
+alias speedup_terminal='rm -f /private/var/log/asl/*.asl'

@@ -6,7 +6,7 @@ export PATH
 # use VIM for EDITOR
 export EDITOR=vim
 
-export HTML_TABS=4
+export HTML_TABS=2
 export JSON_TABS=2
 export JS_TABS=2
 export MAX_WIDTH=120
@@ -65,3 +65,9 @@ c_brown='\[\e[0;33m\]'
 c_yellow='\[\e[1;33m\]'
 c_light_grey='\[\e[0;37m\]'
 c_white='\[\e[1;37m\]'
+
+# Source all the other core .bashrc files from my dotfiles
+source ${DIR}/.bashrc_git
+source ${DIR}/.bashrc_virtualenv
+source ${DIR}/.bashrc_nodeenv
+source ${DIR}/.bashrc_prompt # must be below _git _virtualenv and _nodeenv as they provide prompt functions

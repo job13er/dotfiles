@@ -62,9 +62,11 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 " Highlight some relevant columns
 let max_width=$MAX_WIDTH
-execute "set cc=".max_width
-let text_width=max_width - 1
-execute "set textwidth=".text_width
+if max_width
+    execute "set cc=".max_width
+    let text_width=max_width - 1
+    execute "set textwidth=".text_width
+endif
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " Show me extra whitespace

@@ -29,3 +29,6 @@ ulimit -n 1024
 
 # Speed up a slowly launching Terminal/iTerm
 alias speedup_terminal='rm -f /private/var/log/asl/*.asl'
+
+# Fix mission control by killing Dock
+alias fix_mission_control='killall Dock'

@@ -30,7 +30,7 @@ screen*)
 esac
 
 # Function to assemble the Git parsingart of our prompt.
-git_prompt ()
+git_branch_prompt ()
 {
     GIT_DIR=`git rev-parse --git-dir 2>/dev/null`
     if [ -z "$GIT_DIR" ]; then
@@ -53,4 +53,17 @@ git_prompt ()
         fi
     fi
     echo "(${git_color}$GIT_BRANCH${c_reset})"
+}
+
+git_email_prompt ()
+{
+    GIT_EMAIL=`git config --get user.email`
+    if [ ! -d ".git" ]; then
+        return 0
+    fi
+    echo "[$GIT_EMAIL]"
+}
+
+set_git_email () {
+    git config --global --replace-all user.email $1
 }

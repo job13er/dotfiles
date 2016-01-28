@@ -119,17 +119,4 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 
-let eslint_rules_dir=$ESLINT_RULES_DIR
-if eslint_rules_dir != ""
-    execute "let g:syntastic_javascript_eslint_args=' --rulesdir ".eslint_rules_dir."'"
-endif
-
-let frost_proj_root=$FROST_PROJECT_ROOT
-if frost_proj_root != ""
-    let g:syntastic_typescript_checkers = ['tsc', 'tslint']
-    execute "let g:syntastic_typescript_tsc_exec='".frost_proj_root."/node_modules/.bin/tsc'"
-    execute "let g:syntastic_typescript_tsc_args='--jsx react --moduleResolution node -t es6 --noEmit ".frost_proj_root."/typings/tsd.d.ts'"
-    execute "let g:syntastic_typescript_tslint_exec='".frost_proj_root."/node_modules/.bin/tslint'"
-    execute "let g:syntastic_javascript_eslint_exec='".frost_proj_root."/node_modules/.bin/eslint'"
-endif
 "let g:syntastic_debug = 3

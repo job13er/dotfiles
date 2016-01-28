@@ -71,3 +71,4 @@ source ${DIR}/.bashrc_git
 source ${DIR}/.bashrc_virtualenv
 source ${DIR}/.bashrc_nodeenv
 source ${DIR}/.bashrc_prompt # must be below _git _virtualenv and _nodeenv as they provide prompt functions
+source ${DIR}/.bashrc_npm_env

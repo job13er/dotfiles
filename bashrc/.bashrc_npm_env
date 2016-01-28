@@ -1,0 +1,43 @@
+
+#
+# Utilities for adding/removing paths from PATH
+# taken from http://stackoverflow.com/q/370047
+#
+path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
+path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
+path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
+
+# Directory where you store your repositories
+REPO_ROOT=~/Documents/Repos
+
+#
+# Remove all exising repo directories from PATH
+#
+remove_repos () {
+    IFS=':' read -ra PATHS <<< "$PATH"
+    for path in "${PATHS[@]}"; do
+        if [[ "$path" = ${REPO_ROOT}* ]]
+        then
+            path_remove $path
+        fi
+    done
+}
+
+# Use an alias instead of the function directly so that PATH is updated in callers context
+alias g="go_to"
+
+#
+# Move into a repository and add its local node_modules/.bin to path
+#
+function go_to () {
+    remove_repos
+    path_prepend ${REPO_ROOT}/$1/node_modules/.bin
+    cd ${REPO_ROOT}/$1
+}
+
+# auto-complete function for allowing tab-completion for projects
+_go_to_complete () {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "`/bin/ls ${REPO_ROOT}`" -- $cur) )
+}
+complete -F _g_complete go_to

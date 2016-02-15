@@ -40,4 +40,6 @@ _go_to_complete () {
     local cur=${COMP_WORDS[COMP_CWORD]}
     COMPREPLY=( $(compgen -W "`/bin/ls ${REPO_ROOT}`" -- $cur) )
 }
-complete -F _g_complete go_to
+
+complete -F _go_to_complete go_to
+complete -F _go_to_complete g

@@ -20,6 +20,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'joukevandermaas/vim-ember-hbs'
 
 filetype plugin indent on   " required
 

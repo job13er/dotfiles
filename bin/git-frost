@@ -6,6 +6,11 @@
 # temp branch and upstream remote
 #
 
+if [ -z "$UPSTREAM_ORG" ]
+then
+    UPSTREAM_ORG=ciena-frost
+fi
+
 if [ -z "$GITHUB_EMAIL" ]
 then
     GITHUB_EMAIL='adam.meadows@gmail.com'
@@ -13,7 +18,7 @@ fi
 
 origin=$(git remote -v | grep origin | grep fetch | awk {'print $2;'})
 username=$(echo $origin | awk -F: {'print $2'} | awk -F/ {'print $1;'})
-upstream=$(echo $origin | sed -e "s/$username/ciena-frost/g")
+upstream=$(echo $origin | sed -e "s/$username/$UPSTREAM_ORG/g")
 
 git config --local --replace-all user.email $GITHUB_EMAIL
 git remote add upstream $upstream

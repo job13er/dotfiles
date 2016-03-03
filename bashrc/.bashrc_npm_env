@@ -44,7 +44,6 @@ _go_to_complete () {
 complete -F _go_to_complete go_to
 complete -F _go_to_complete g
 
-
 ###-begin-npm-completion-###
 #
 # npm command completion script

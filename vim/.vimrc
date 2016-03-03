@@ -21,6 +21,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'joukevandermaas/vim-ember-hbs'
+Bundle 'tpope/vim-surround'
 
 filetype plugin indent on   " required
 

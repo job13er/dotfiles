@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 " Bundle commands
 Bundle 'scrooloose/syntastic'
+Bundle 'gcorne/vim-sass-lint'
 Bundle 'groenewege/vim-less'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'jtratner/vim-flavored-markdown'
@@ -22,6 +23,7 @@ Bundle 'mxw/vim-jsx'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'joukevandermaas/vim-ember-hbs'
 Bundle 'tpope/vim-surround'
+Bundle 'dagwieers/asciidoc-vim'
 
 filetype plugin indent on   " required
 
@@ -93,6 +95,7 @@ au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
+au BufRead,BufNewFile *.adoc set filetype=asciidoc
 
 " Custom status line
 set laststatus=2            " Always show status line
@@ -118,7 +121,10 @@ set statusline+=\ %P    "percent through file
 " Syntastic options
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_sass_checkers = ['sass_lint']
+let g:syntastic_scss_checkers = ['sass_lint']
 let g:syntastic_always_populate_loc_list = 1
+
 "let g:syntastic_auto_loc_list = 1
 
 "let g:syntastic_debug = 3

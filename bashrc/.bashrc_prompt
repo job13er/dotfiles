@@ -1,20 +1,3 @@
-
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    c_user=$c_green
-    c_path=$c_cyan
-    c_host=$c_purple
-    c_git_clean=$c_light_grey
-    c_git_staged=$c_green
-    c_git_unstaged=$c_red
-else
-    c_reset=
-    c_user=
-    c_path=
-    c_git_clean=
-    c_git_staged=
-    c_git_unstaged=
-fi
-
 # Add the titlebar information when it is supported.
 SHORT_HOSTNAME=$(echo $HOSTNAME | awk -F. '{print$1;}')
 case $TERM in

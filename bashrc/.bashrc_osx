@@ -32,3 +32,22 @@ alias speedup_terminal='sudo rm -f /private/var/log/asl/*.asl'
 
 # Fix mission control by killing Dock
 alias fix_mission_control='killall Dock'
+
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    export c_user=$c_green
+    export c_path=$c_cyan
+    export c_host=$c_purple
+    export c_git_clean=$c_light_grey
+    export c_git_staged=$c_green
+    export c_git_unstaged=$c_red
+else
+    export c_reset=
+    export c_user=
+    export c_path=
+    export c_git_clean=
+    export c_git_staged=
+    export c_git_unstaged=
+fi
+
+DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+source ${DIR}/.bashrc_prompt

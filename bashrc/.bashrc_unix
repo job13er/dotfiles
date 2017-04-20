@@ -5,3 +5,22 @@ export LS_COLORS="di=01;36;49:ln=01;35;49:so=01;32;49:pi=01;33;49:ex=01;31;49:bd
 alias ls='ls -F --color=tty'
 alias ll='ls -al'
 
+
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    export c_user=$c_brown
+    export c_path=$c_cyan
+    export c_host=$c_light_blue
+    export c_git_clean=$c_light_grey
+    export c_git_staged=$c_green
+    export c_git_unstaged=$c_red
+else
+    export c_reset=
+    export c_user=
+    export c_path=
+    export c_git_clean=
+    export c_git_staged=
+    export c_git_unstaged=
+fi
+
+DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+source ${DIR}/.bashrc_prompt

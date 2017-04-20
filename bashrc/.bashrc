@@ -70,4 +70,5 @@ export c_white='\[\e[1;37m\]'
 source ${DIR}/.bashrc_git
 source ${DIR}/.bashrc_virtualenv
 source ${DIR}/.bashrc_nodeenv
+source ${DIR}/.bashrc_repos
 source ${DIR}/.bashrc_npm_env

@@ -35,6 +35,7 @@ function go_to () {
     cd ${REPO_ROOT}/$1
     if [ -e "env/bin/activate" ]
     then
+        export JSON_TABS=4 # use four-space tabbing in JSON files in a python project
         source env/bin/activate
     fi
 }

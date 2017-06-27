@@ -25,14 +25,28 @@ remove_repos () {
 
 # Use an alias instead of the function directly so that PATH is updated in callers context
 alias g="go_to"
+alias gp="go_to_public"
 
 #
 # Move into a repository and add its local node_modules/.bin to path
 #
 function go_to () {
     remove_repos
-    path_prepend ${REPO_ROOT}/$1/node_modules/.bin
-    cd ${REPO_ROOT}/$1
+    path_prepend ${REPO_ROOT}/Private/$1/node_modules/.bin
+    cd ${REPO_ROOT}/Private/$1
+    if [ -e "env/bin/activate" ]
+    then
+        source env/bin/activate
+    fi
+}
+
+#
+# Move into a repository and add its local node_modules/.bin to path
+#
+function go_to_public () {
+    remove_repos
+    path_prepend ${REPO_ROOT}/Public/$1/node_modules/.bin
+    cd ${REPO_ROOT}/Public/$1
     if [ -e "env/bin/activate" ]
     then
         export JSON_TABS=4 # use four-space tabbing in JSON files in a python project
@@ -43,8 +57,16 @@ function go_to () {
 # auto-complete function for allowing tab-completion for projects
 _go_to_complete () {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "`/bin/ls ${REPO_ROOT}`" -- $cur) )
+    COMPREPLY=( $(compgen -W "`/bin/ls ${REPO_ROOT}/Private`" -- $cur) )
+}
+
+# auto-complete function for allowing tab-completion for projects
+_go_to_public_complete () {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "`/bin/ls ${REPO_ROOT}/Public`" -- $cur) )
 }
 
 complete -F _go_to_complete go_to
 complete -F _go_to_complete g
+complete -F _go_to_public_complete go_to_public
+complete -F _go_to_public_complete gp

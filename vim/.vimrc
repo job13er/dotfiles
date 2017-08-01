@@ -9,21 +9,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundle commands
-Bundle 'scrooloose/syntastic'
-Bundle 'gcorne/vim-sass-lint'
-Bundle 'groenewege/vim-less'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'jtratner/vim-flavored-markdown'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'saltstack/salt-vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'elzr/vim-json'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
 Bundle 'leafgarland/typescript-vim'
-Bundle 'joukevandermaas/vim-ember-hbs'
-Bundle 'tpope/vim-surround'
-Bundle 'dagwieers/asciidoc-vim'
+Bundle 'ajh17/Spacegray.vim'
+Bundle 'w0rp/ale'
 
 filetype plugin indent on   " required
 
@@ -45,7 +36,7 @@ set clipboard=unnamed
 set hls
 set nu
 
-colorscheme desert
+colorscheme spacegray
 
 syntax on
 
@@ -87,7 +78,6 @@ autocmd FileType gitcommit setlocal spell
 
 " File extension associations
 au BufRead,BufNewFile *.pyt set filetype=python
-au BufRead,BufNewFile *.jst set filetype=javascript
 au BufRead,BufNewFile *.tmpl set filetype=htmldjango
 au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.json set filetype=json
@@ -95,7 +85,6 @@ au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
-au BufRead,BufNewFile *.adoc set filetype=asciidoc
 
 " Custom status line
 set laststatus=2            " Always show status line
@@ -112,19 +101,7 @@ set statusline+=%h      "help file flag
 set statusline+=%m      "modified flag
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
-
-" Syntastic options
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_sass_checkers = ['sass_lint']
-let g:syntastic_scss_checkers = ['sass_lint']
-let g:syntastic_always_populate_loc_list = 1
-
-"let g:syntastic_auto_loc_list = 1
-
-"let g:syntastic_debug = 3

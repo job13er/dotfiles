@@ -23,6 +23,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 alias ls='ls -F'
 alias ll='ls -al'
+alias vim='/usr/local/bin/vim'
 
 # Stop complaining about too many open files
 ulimit -n 4096

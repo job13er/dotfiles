@@ -35,6 +35,7 @@ set commentstring=\ #\ %s
 set clipboard=unnamed
 set hls
 set nu
+set backupcopy=yes
 
 colorscheme spacegray
 

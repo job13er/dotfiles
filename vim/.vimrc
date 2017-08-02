@@ -14,6 +14,7 @@ Bundle 'elzr/vim-json'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'ajh17/Spacegray.vim'
+Bundle 'hail2u/vim-css3-syntax'
 Bundle 'w0rp/ale'
 
 filetype plugin indent on   " required
@@ -86,6 +87,7 @@ au BufRead,BufNewFile master.cfg set filetype=python
 au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
+au BufRead,BufNewFile .babelrc set filetype=json
 
 " Custom status line
 set laststatus=2            " Always show status line

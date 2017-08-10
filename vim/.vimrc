@@ -16,6 +16,8 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'ajh17/Spacegray.vim'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'w0rp/ale'
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
 
 filetype plugin indent on   " required
 

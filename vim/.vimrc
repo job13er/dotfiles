@@ -89,6 +89,9 @@ au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
 au BufRead,BufNewFile .babelrc set filetype=json
 
+" Enable JSDoc syntax highlighting
+let g:javascript_plugin_jsdoc = 1
+
 " Custom status line
 set laststatus=2            " Always show status line
 set statusline=%f           " file path from CWD

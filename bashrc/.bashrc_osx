@@ -52,3 +52,10 @@ fi
 
 DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
 source ${DIR}/.bashrc_prompt
+
+# Bash completion from homebrew
+# You need to first install it with:
+#
+# brew install bash-completion
+#
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion

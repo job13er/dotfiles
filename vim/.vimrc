@@ -18,6 +18,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'w0rp/ale'
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'vim-airline/vim-airline'
 
 filetype plugin indent on   " required
 
@@ -93,6 +94,9 @@ au BufRead,BufNewFile .babelrc set filetype=json
 
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
+
+" Enable vim-airline for ALE status line integration
+let g:airline#extensions#ale#enabled = 1
 
 " Custom status line
 set laststatus=2            " Always show status line

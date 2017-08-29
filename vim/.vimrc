@@ -94,6 +94,25 @@ au BufRead,BufNewFile .babelrc set filetype=json
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    if l:counts.total == 0
+        hi StatusLine ctermfg=green
+    else
+        hi StatusLine ctermfg=red
+    endif
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
 " Custom status line
 set laststatus=2            " Always show status line
 set statusline=%f           " file path from CWD
@@ -109,7 +128,11 @@ set statusline+=%h      "help file flag
 set statusline+=%m      "modified flag
 set statusline+=%r      "read only flag
 set statusline+=%y      "filetype
+set statusline+=\           " blank space
+set statusline+=%{LinterStatus()}
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
+

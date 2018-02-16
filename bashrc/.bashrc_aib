@@ -1,0 +1,3 @@
+# BASH aliases for all-i-blank
+AIB_DIR=~/Documents/dev/all-i-blank
+alias goaib="cd $AIB_DIR && v.switch all-i-blank"

@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 " Bundle commands
 Bundle 'pangloss/vim-javascript'
 Bundle 'elzr/vim-json'
+Bundle 'mxw/vim-jsx'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'ajh17/Spacegray.vim'

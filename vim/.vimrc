@@ -19,7 +19,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'w0rp/ale'
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
-Bundle 'JamshedVesuna/vim-markdown-preview'
+Bundle 'shime/vim-livedown'
 
 filetype plugin indent on   " required
 
@@ -96,8 +96,9 @@ au BufRead,BufNewFile .babelrc set filetype=json
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
-" Enable grip for markdown preview
-let vim_markdown_preview_github=1
+" Shortcut for livedown toggling for markdown preview
+nmap gm :LivedownToggle<CR>
+let g:livedown_browser = "safari"
 
 " Custom status line
 set laststatus=2            " Always show status line

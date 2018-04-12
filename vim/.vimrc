@@ -100,6 +100,13 @@ let g:javascript_plugin_jsdoc = 1
 nmap gm :LivedownToggle<CR>
 let g:livedown_browser = "safari"
 
+" Prettier setup
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['markdown'] = ['prettier']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+
 " Custom status line
 set laststatus=2            " Always show status line
 set statusline=%f           " file path from CWD

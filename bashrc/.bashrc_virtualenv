@@ -3,6 +3,7 @@
 #
 
 export WORKON_HOME=$HOME/.virtualenvs
+export PIPENV_VENV_IN_PROJECT="1"
 
 # Prompt function for displaying the virtualenv you're in
 venv_prompt ()

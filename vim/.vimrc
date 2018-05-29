@@ -97,6 +97,9 @@ au BufRead,BufNewFile .babelrc set filetype=json
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
+" Enable Flow syntax highlighting
+let g:javascript_plugin_flow = 1
+
 " Shortcut for livedown toggling for markdown preview
 nmap gm :LivedownToggle<CR>
 let g:livedown_browser = "safari"
@@ -106,6 +109,9 @@ let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+
+" Flow setup
+let g:flow#autoclose = 1
 
 " Custom status line
 set laststatus=2            " Always show status line

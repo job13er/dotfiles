@@ -93,6 +93,7 @@ au BufRead,BufNewFile *git\/config set filetype=gitconfig
 au BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 au BufRead,BufNewFile *.tsx set filetype=typescript
 au BufRead,BufNewFile .babelrc set filetype=json
+au BufRead,BufNewFile *.overrides,*.variables set filetype=less
 
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1

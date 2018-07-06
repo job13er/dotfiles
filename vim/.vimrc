@@ -81,7 +81,7 @@ autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade
 
 " spell-check markdown and git commits
 autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal spell tw=72 fo=at wm=0
 
 " File extension associations
 au BufRead,BufNewFile *.pyt set filetype=python

@@ -21,6 +21,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'shime/vim-livedown'
 Bundle 'flowtype/vim-flow'
+Bundle 'prettier/vim-prettier'
 
 filetype plugin indent on   " required
 
@@ -95,6 +96,10 @@ au BufRead,BufNewFile *.tsx set filetype=typescript
 au BufRead,BufNewFile .babelrc set filetype=json
 au BufRead,BufNewFile *.overrides,*.variables set filetype=less
 
+" Run Prettier on save for some filetypes
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.json PrettierAsync
+
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
@@ -105,17 +110,12 @@ let g:javascript_plugin_flow = 1
 nmap gm :LivedownToggle<CR>
 let g:livedown_browser = "safari"
 
-" Prettier setup
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['javascript.jsx'] = ['prettier']
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_javascriptjsx_prettier_use_local_config = 1
+let g:ale_history_log_output = 1
 
-" Pyre setup
-let g:ale_linters = {}
-let g:ale_linters['python'] = ['flake8', 'pyre']
+" Linter setup
+let g:ale_linters = {
+\  'python': ['flake8']
+\}
 
 " Flow setup
 let g:flow#autoclose = 1

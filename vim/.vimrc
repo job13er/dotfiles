@@ -97,8 +97,8 @@ au BufRead,BufNewFile .babelrc set filetype=json
 au BufRead,BufNewFile *.overrides,*.variables set filetype=less
 
 " Run Prettier on save for some filetypes
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.json PrettierAsync
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.json PrettierAsync
 
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1

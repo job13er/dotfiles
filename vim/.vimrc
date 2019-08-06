@@ -114,7 +114,8 @@ let g:ale_history_log_output = 1
 
 " Linter setup
 let g:ale_linters = {
-\  'python': ['flake8']
+\  'python': ['flake8'],
+\  'javascript': ['eslint', 'flow']
 \}
 
 " Flow setup

@@ -1,5 +1,9 @@
 # The OSX specific stuff
 
+# Add homebrew bin to PATH
+PATH=/usr/local/bin:$PATH
+export PATH
+
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
 

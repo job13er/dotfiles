@@ -26,7 +26,6 @@ Bundle 'prettier/vim-prettier'
 filetype plugin indent on   " required
 
 set encoding=utf-8
-set paste
 set expandtab
 set textwidth=0
 set tabstop=4
@@ -82,7 +81,7 @@ autocmd FileType c,cpp,python,javascript,htmldjango,less,scss,css,make,json,jade
 
 " spell-check markdown and git commits
 autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd FileType gitcommit setlocal spell tw=72 fo=at wm=0
+autocmd FileType gitcommit setlocal spell
 
 " File extension associations
 au BufRead,BufNewFile *.pyt set filetype=python
@@ -105,6 +104,9 @@ let g:javascript_plugin_jsdoc = 1
 
 " Enable Flow syntax highlighting
 let g:javascript_plugin_flow = 1
+
+"" Shortcut to sign comment
+:iab <expr> jbb strftime("(@job13er %Y-%m-%d)")
 
 " Shortcut for livedown toggling for markdown preview
 nmap gm :LivedownToggle<CR>
@@ -141,5 +143,3 @@ set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
-
-

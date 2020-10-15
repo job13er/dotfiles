@@ -66,8 +66,6 @@ nmap <silent> <c-l> :wincmd l<CR>
 let max_width=$MAX_WIDTH
 if max_width
     execute "set cc=".max_width
-    let text_width=max_width - 1
-    execute "set textwidth=".text_width
 endif
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 

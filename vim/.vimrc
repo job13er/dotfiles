@@ -2,27 +2,27 @@ set nocompatible        " be iMproved, required
 filetype off            " required
 
 " set the rutnime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-" Let vundle manager Vundle, required
-Bundle 'gmarik/vundle'
+" Let vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Bundle commands
-Bundle 'pangloss/vim-javascript'
-Bundle 'elzr/vim-json'
-Bundle 'mxw/vim-jsx'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'ajh17/Spacegray.vim'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'w0rp/ale'
-Bundle 'tpope/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
-Bundle 'shime/vim-livedown'
-Bundle 'flowtype/vim-flow'
-Bundle 'prettier/vim-prettier'
+"Vundle plugins
+Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'w0rp/ale'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'shime/vim-livedown'
+Plugin 'flowtype/vim-flow'
+Plugin 'prettier/vim-prettier'
 
+call vundle#end()           " required
 filetype plugin indent on   " required
 
 set encoding=utf-8

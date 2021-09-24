@@ -1,4 +1,3 @@
 vim/.netrwhist
-vim/bundle/*
-!vim/bundle/vundle
+vim/plugged/*
 vim/after/ftplugin/markdown/instant-markdown.vim

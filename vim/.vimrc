@@ -6,16 +6,18 @@ call plug#begin('~/.vim/plugged')
 
 " Plug plugins
 Plug 'yuezk/vim-js'
+Plug 'othree/html5.vim'
+Plug 'othree/yajs.vim'
 Plug 'elzr/vim-json'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
-Plug 'ajh17/Spacegray.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'flowtype/vim-flow'
 Plug 'prettier/vim-prettier'
+Plug 'mhartington/oceanic-next'
 
 " Initialize plugin system
 call plug#end()
@@ -38,9 +40,13 @@ set hls
 set nu
 set backupcopy=yes
 
-colorscheme spacegray
-
 syntax on
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+colorscheme OceanicNext
 
 let &titlestring = expand("%:p") . ": (" . hostname() . ")"
 if &term == "screen"

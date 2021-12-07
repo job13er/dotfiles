@@ -29,27 +29,6 @@ alias ls='ls -F'
 alias ll='ls -al'
 alias vim='/usr/local/bin/vim'
 
-# make target completion (from https://stackoverflow.com/a/36044470)
-function _makefile_targets {
-    local curr_arg;
-    local targets;
-
-    # Find makefile targets available in the current directory
-    targets=''
-    if [[ -e "$(pwd)/Makefile" ]]; then
-        targets=$( \
-            grep -oE '^[a-zA-Z0-9_-]+:' Makefile \
-            | sed 's/://' \
-            | tr '\n' ' ' \
-        )
-    fi
-
-    # Filter targets based on user input to the bash completion
-    curr_arg=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "${targets[@]}" -- $curr_arg ) );
-}
-complete -F _makefile_targets make
-
 # Stop complaining about too many open files
 ulimit -n 4096
 
@@ -76,6 +55,7 @@ else
 fi
 
 DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+source ${DIR}/.bashrc_make
 source ${DIR}/.bashrc_prompt
 
 # Bash completion from homebrew

@@ -5,6 +5,10 @@ export LS_COLORS="di=01;36;49:ln=01;35;49:so=01;32;49:pi=01;33;49:ex=01;31;49:bd
 alias ls='ls -F --color=tty'
 alias ll='ls -al'
 
+if [ -z "$SSH_AGENT_PID" ]
+then
+    eval `ssh-agent`
+fi
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     export c_user=$c_brown
@@ -23,4 +27,9 @@ else
 fi
 
 DIR="$( cd "$( dirname "${SOURCE}" )" && pwd )"
+source ${DIR}/.bashrc_make
 source ${DIR}/.bashrc_prompt
+
+[ -f /etc/bash_completion ] && . /etc/bash_completion
+
+alias bye="kill $SSH_AGENT_PID; exit"

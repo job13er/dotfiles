@@ -32,4 +32,4 @@ source ${DIR}/.bashrc_prompt
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 
-alias bye="kill $SSH_AGENT_PID; exit"
+alias bye="killall -9 ssh-agent; exit"

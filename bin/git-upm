@@ -2,9 +2,9 @@
 
 #
 # This script is designed to allow you to fetch changes from an
-# upstream/master branch on a remote repository (identified by 'upstream')
-# and apply those changes to a local master branch, without having to
-# check out the master branch
+# upstream/{main,master} branch on a remote repository (identified by 'upstream')
+# and apply those changes to a local {main,master} branch, without having to
+# check out the {main,master} branch
 #
 # If you put this script in bin (on your PATH), you can call it as:
 # git upm
@@ -22,15 +22,15 @@ _usage() {
     exit 1
 }
 
-_not_from_master() {
-    echo "WARNING: this command should not be run from the 'master' branch"
+_not_from_main() {
+    echo "WARNING: this command should not be run from the \"$(git rev-parse --abbrev-ref HEAD)\" branch"
     exit 2
 }
 
 _merge_ff() {
-    master="$1"
+    main="$1"
     upstream="$2"
-    master_ref="refs/heads/$master"
+    main_ref="refs/heads/$main"
     upstream_ref="refs/remotes/$upstream"
     upstream_orig_hash="$(git show-ref -s --verify $upstream_ref 2> /dev/null)"
     if [ $? -ne 0 ]; then
@@ -44,30 +44,30 @@ _merge_ff() {
         _print "${upstream_orig_hash:0:7} to ${upstream_new_hash:0:7}\n"
     fi
 
-    master_orig_hash="$(git show-ref -s --verify $master_ref 2> /dev/null)"
+    main_orig_hash="$(git show-ref -s --verify $main_ref 2> /dev/null)"
     if [ $? -ne 0 ]; then
-        _print "upm: WARN: unknown branch $master\n"
+        _print "upm: WARN: unknown branch $main\n"
         _usage
     fi
 
-    if [ "$master_orig_hash" == "$upstream_new_hash" ]; then
-        _print "upm: $master is up-to-date at ${master_orig_hash:0:7}\n"
+    if [ "$main_orig_hash" == "$upstream_new_hash" ]; then
+        _print "upm: $main is up-to-date at ${main_orig_hash:0:7}\n"
     else
-        temp_hash="$(git merge-base $master_orig_hash $upstream_new_hash)"
-        if [ "$temp_hash" != "$master_orig_hash" ]; then
-            _print "upm: WARN: merging $upstream into $master "
+        temp_hash="$(git merge-base $main_orig_hash $upstream_new_hash)"
+        if [ "$temp_hash" != "$main_orig_hash" ]; then
+            _print "upm: WARN: merging $upstream into $main "
             _print "would not be a fast-forward\n"
             return 1
         fi
-        _print "upm: Updating ${master} "
-        _print "${master_orig_hash:0:7}..${upstream_new_hash:0:7}\n"
+        _print "upm: Updating ${main} "
+        _print "${main_orig_hash:0:7}..${upstream_new_hash:0:7}\n"
         msg="merge $upstream: Fast forward"
         new="$upstream_new_hash"
-        orig="$master_orig_hash"
-        if git update-ref -m "$msg" "$master_ref" "$new" "$orig"; then
+        orig="$main_orig_hash"
+        if git update-ref -m "$msg" "$main_ref" "$new" "$orig"; then
             if [ -z $quiet ]; then
                 _print "upm: Fast forward\n"
-                git --no-pager diff --stat "$master@{1}" "$master"
+                git --no-pager diff --stat "$main@{1}" "$main"
             fi
         else
             _print "upm: WARN: fast forward using update-ref failed\n"
@@ -98,8 +98,9 @@ while getopts "q" opt; do
 done
 shift $((OPTIND-1))
 
-if [ $(git rev-parse --abbrev-ref HEAD) == "master" ]; then
-    _not_from_master
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" == "main" || "$branch" == "master" ]; then
+    _not_from_main
 fi
 
 case $# in

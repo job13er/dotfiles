@@ -15,7 +15,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'flowtype/vim-flow'
 Plug 'prettier/vim-prettier'
 Plug 'mhartington/oceanic-next'
 
@@ -62,6 +61,10 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <s-k> :wincmd k<CR>
+nmap <silent> <s-j> :wincmd j<CR>
+nmap <silent> <s-h> :wincmd h<CR>
+nmap <silent> <s-l> :wincmd l<CR>
 
 " Highlight some relevant columns
 let max_width=$MAX_WIDTH
@@ -116,7 +119,7 @@ let g:ale_history_log_output = 1
 " Linter setup
 let g:ale_linters = {
 \  'python': ['flake8'],
-\  'javascript': ['eslint', 'flow']
+\  'javascript': ['eslint', 'flow-language-server']
 \}
 
 " Flow setup

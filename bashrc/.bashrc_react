@@ -4,6 +4,8 @@
 
 function test_component() {
     path=$1
+    shift
+    rest=$*
     filename=$(basename -- "$path")
     dir=$(dirname -- $path)
     component=""
@@ -16,8 +18,8 @@ function test_component() {
     test_file="${dir}/tests/${component}.test.mjs"
 
 
-    echo ./node_modules/.bin/jest --watch --coverage --collectCoverageFrom $path $test_file
-    ./node_modules/.bin/jest --watch --coverage --collectCoverageFrom $path $test_file
+    echo ./node_modules/.bin/jest --watch --coverage --collectCoverageFrom $path $rest $test_file
+    ./node_modules/.bin/jest --watch --coverage --collectCoverageFrom $path $rest $test_file
 }
 
 alias tcomp="test_component"

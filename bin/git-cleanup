@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#
+# This script is designed to cleanup after a feature branch has been merged
+# it will switch to the temp branch, update it, and delete the current feature branch
+#
+# If you put this script in bin (on your PATH), you can call it as:
+# git cleanup
+#
+
+
+_print() {
+    echo -ne "$1" 1>&2
+}
+
+_usage() {
+    echo "Usage: git cleanup <or> git-cleanup" 1>&2
+    exit 1
+}
+
+_not_from_main() {
+    echo "WARNING: this command should not be run from the \"$(git rev-parse --abbrev-ref HEAD)\" branch"
+    exit 2
+}
+
+
+_cleanup() {
+    branch=$(git branch --show-current)
+    _print "cleanup: Updating...\n"
+    git checkout temp
+    git upm
+    if [ -z "$(git branch | grep main)" ]
+    then
+        git merge master
+    else
+
+        git merge main
+    fi
+
+    _print "cleanup: Deleting $branch...\n"
+    git branch -D $branch
+
+    _print "cleanup: Done\n"
+}
+
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" == "main" ] || [ "$branch" == "master" ]; then
+    _not_from_main
+fi
+
+case $# in
+    0 ) _cleanup;;
+    * ) _usage
+esac
+

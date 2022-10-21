@@ -1,11 +1,12 @@
 # The OSX specific stuff
 
 # Add homebrew bin to PATH
-PATH=/usr/local/bin:$PATH
+PATH=/opt/homebrew/bin:$PATH
 export PATH
 
 # Set architecture flags
-export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch arm64"
 
 # Setting for the new UTF-8 terminal support in Lion
 export LC_CTYPE=en_US.UTF-8

@@ -5,18 +5,10 @@ filetype off            " required
 call plug#begin('~/.vim/plugged')
 
 " Plug plugins
-Plug 'yuezk/vim-js'
-Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
-Plug 'elzr/vim-json'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'airblade/vim-gitgutter'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'w0rp/ale'
-Plug 'tpope/vim-markdown'
-Plug 'jtratner/vim-flavored-markdown'
-Plug 'prettier/vim-prettier'
-Plug 'mhartington/oceanic-next'
+Plug 'dense-analysis/ale'
+Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -39,13 +31,13 @@ set hls
 set nu
 set backupcopy=yes
 
+colorscheme gruvbox
+
 syntax on
 
 if (has("termguicolors"))
     set termguicolors
 endif
-
-colorscheme OceanicNext
 
 let &titlestring = expand("%:p") . ": (" . hostname() . ")"
 if &term == "screen"
@@ -121,6 +113,17 @@ let g:ale_linters = {
 \  'python': ['flake8'],
 \  'javascript': ['eslint', 'flow-language-server']
 \}
+
+let g:ale_linters_explicit = 1
+
+" Fixer setup
+let g:ale_fixers = {
+\  'python': ['black'],
+\  'javascript': ['prettier'],
+\  'css': ['prettier'],
+\}
+
+let g:ale_fix_on_save = 1
 
 " Flow setup
 let g:flow#autoclose = 1

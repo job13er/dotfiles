@@ -32,6 +32,7 @@ set nu
 set backupcopy=yes
 
 colorscheme gruvbox
+set background=dark
 
 syntax on
 

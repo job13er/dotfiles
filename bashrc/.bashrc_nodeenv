@@ -3,7 +3,7 @@ nodeenv_prompt ()
 {
     if [ ! -z "$NODE_VIRTUAL_ENV" ]
     then
-        echo "(${c_purple}node@`basename $NODE_VIRTUAL_ENV`${c_reset}) "
+        echo "(${c_purple}`basename $NODE_VIRTUAL_ENV`${c_reset}) "
     else
         echo ""
     fi

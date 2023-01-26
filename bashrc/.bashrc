@@ -67,6 +67,32 @@ export c_yellow='\[\e[1;33m\]'
 export c_light_grey='\[\e[0;37m\]'
 export c_white='\[\e[1;37m\]'
 
+
+# Default arch prompt for environments where we don't care about it
+arch_prompt ()
+{
+    echo ""
+}
+
+# A function to setup unix color scheme (used by osx in x86 arch)
+unix_colors() {
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        export c_user=$c_brown
+        export c_path=$c_cyan
+        export c_host=$c_light_blue
+        export c_git_clean=$c_light_grey
+        export c_git_staged=$c_green
+        export c_git_unstaged=$c_red
+    else
+        export c_reset=
+        export c_user=
+        export c_path=
+        export c_git_clean=
+        export c_git_staged=
+        export c_git_unstaged=
+    fi
+}
+
 # Source all the other core .bashrc files from my dotfiles
 source ${DIR}/.bashrc_git
 source ${DIR}/.bashrc_virtualenv

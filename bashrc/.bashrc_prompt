@@ -15,5 +15,12 @@ esac
 path="${c_path}\w${c_reset}"
 user="${c_user}\u${c_reset}"
 host="${c_host}\h${c_reset}"
-prompt="\$(venv_prompt)\$(nodeenv_prompt)${path} \$(git_email_prompt) \$(git_branch_prompt) \n[${user}@${host}]\$ "
+
+
+prompt_env()
+{
+    echo "$(venv_prompt)$(nodeenv_prompt)$(arch_prompt)"
+}
+
+prompt="\$(prompt_env)${path} \$(git_branch_prompt)\n[${user}@${host}]\$ "
 PROMPT_COMMAND="$TITLEBAR PS1=\"${prompt}\" ;"

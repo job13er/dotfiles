@@ -36,10 +36,6 @@ set background=dark
 
 syntax on
 
-if (has("termguicolors"))
-    set termguicolors
-endif
-
 let &titlestring = expand("%:p") . ": (" . hostname() . ")"
 if &term == "screen"
     set t_ts=^[k

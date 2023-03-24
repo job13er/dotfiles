@@ -2,9 +2,9 @@
 # Utilities for adding/removing paths from PATH
 # taken from http://stackoverflow.com/q/370047
 #
-path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
-path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
-path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
+function path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
+function path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
+function path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
 
 # Directory where you store your repositories
 REPO_ROOT=${REPO_ROOT:-~/Documents/Repos}
@@ -12,12 +12,11 @@ REPO_ROOT=${REPO_ROOT:-~/Documents/Repos}
 #
 # Remove all exising repo directories from PATH
 #
-remove_repos () {
-    IFS=':' read -ra PATHS <<< "$PATH"
-    for path in "${PATHS[@]}"; do
-        if [[ "$path" = ${REPO_ROOT}* ]]
+function remove_repos () {
+    for dir in "$path"; do
+        if [[ "$dir" = ${REPO_ROOT}* ]]
         then
-            path_remove $path
+            path_remove $dir
         fi
     done
 }
@@ -59,4 +58,6 @@ function go_to_public () {
     fi
 }
 
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 source ~/.dotfiles/bashrc/repos.bash

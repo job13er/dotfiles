@@ -11,8 +11,15 @@ function test_module() {
     module="${filename%.*}"
     full_module="$(echo $dir | tr / .).${module}"
 
-    echo invoke test-python --test-object=${full_module} $rest
-    invoke test-python --test-object=${full_module} $rest
+    extras=""
+    if [ ! -z "${QUICK}" ]
+    then
+        extras="--test-options=--keepdb"
+    fi
+
+    echo invoke test-python --test-object=${full_module} $rest $extras
+    invoke test-python --test-object=${full_module} $rest $extras
 }
 
 alias tmod="test_module"
+alias qtmod="QUICK=1 test_module"

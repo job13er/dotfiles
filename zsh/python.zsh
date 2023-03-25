@@ -4,11 +4,11 @@
 #
 
 function test_module() {
-    path=$1
+    full_path=$1
     shift
     rest=$*
-    filename=$(basename -- "$path")
-    dir=$(dirname -- $path)
+    filename=$full_path:t
+    dir=$full_path:h
     module="${filename%.*}"
     full_module="$(echo $dir | tr / .).${module}"
 

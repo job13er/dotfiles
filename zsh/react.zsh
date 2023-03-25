@@ -3,23 +3,23 @@
 #
 
 function test_component() {
-    path=$1
+    full_path=$1
     shift
     rest=$*
-    filename=$(basename -- "$path")
-    dir=$(dirname -- $path)
+    filename=$full_path:t
+    dir=$full_path:h
     component=""
     if [[ "$filename" == "index.mjs" ]]
     then
-        component="$(basename -- "$dir")"
+        component=$dir:t
     else
         component="${filename%.*}"
     fi
     test_file="${dir}/tests/${component}.test.mjs"
 
 
-    echo jest --watch --coverage --collectCoverageFrom $path $rest $test_file
-    jest --watch --coverage --collectCoverageFrom $path $rest $test_file
+    echo jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
+    jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
 }
 
 alias tcomp="test_component"

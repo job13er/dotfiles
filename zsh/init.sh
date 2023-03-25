@@ -56,4 +56,4 @@ echo "source $ZDIR/configs.zsh" >> $RC
 echo '' >> $RC
 echo 'source $(brew --prefix)/opt/spaceship/spaceship.zsh' >> $RC
 
-echo "source $RC" >> .zprofile
+echo "source $RC" >> ~/.zprofile

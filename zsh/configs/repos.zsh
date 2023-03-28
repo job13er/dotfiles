@@ -58,6 +58,8 @@ function go_to_public () {
     fi
 }
 
+path_append ~/.dotfiles/bin
+
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 source ~/.dotfiles/bashrc/repos.bash

@@ -2,3 +2,4 @@ bin/ktlint
 vim/.netrwhist
 vim/plugged/*
 vim/after/ftplugin/markdown/instant-markdown.vim
+*.zwc

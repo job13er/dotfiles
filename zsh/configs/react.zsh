@@ -9,13 +9,18 @@ function test_component() {
     filename=$full_path:t
     dir=$full_path:h
     component=""
-    if [[ "$filename" == "index.mjs" ]]
+    if [[ "$filename" == "index.tsx" || "$filename" == "index.ts" ]]
     then
         component=$dir:t
     else
         component="${filename%.*}"
     fi
-    test_file="${dir}/tests/${component}.test.mjs"
+    test_file="${dir}/tests/${component}.test.tsx"
+
+    if [ ! -f $test_file ]
+    then
+        test_file="${dir}/tests/${component}.test.ts"
+    fi
 
 
     echo jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file

@@ -96,6 +96,5 @@ unix_colors() {
 # Source all the other core .bashrc files from my dotfiles
 source ${DIR}/.bashrc_git
 source ${DIR}/.bashrc_virtualenv
-source ${DIR}/.bashrc_nodeenv
 source ${DIR}/.bashrc_repos
 source ${DIR}/.bashrc_npm_env

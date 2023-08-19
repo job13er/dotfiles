@@ -23,8 +23,8 @@ function test_component() {
     fi
 
 
-    echo jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
-    jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
+    echo npx jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
+    npx jest --watch --coverage --collectCoverageFrom $full_path $rest $test_file
 }
 
 alias tcomp="test_component"

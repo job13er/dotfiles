@@ -16,8 +16,8 @@ function test_browser() {
     browser=$1
     full_module=$(get_module $2)
 
-    echo CARIUM_TESTER_DEFAULT_STOP=5 tester run --driver=${browser} --test=${full_module}
-    CARIUM_TESTER_DEFAULT_STOP=5 tester run --driver=${browser} --test=${full_module}
+    echo CARIUM_TESTER_DEFAULT_STOP=6 tester run --driver=${browser} --test=${full_module}
+    CARIUM_TESTER_DEFAULT_STOP=6 tester run --driver=${browser} --test=${full_module}
 }
 
 function test_chrome() {

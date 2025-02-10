@@ -28,6 +28,15 @@ function go_to () {
     then
         source env/bin/activate
     fi
+    if [ -e ".venv/bin/activate" ]
+    then
+        export JSON_TABS=4 # use four-space tabbing in JSON files in a python project
+        source .venv/bin/activate
+    fi
+    if [ -e ".nvmrc" ]
+    then
+        nvm use
+    fi
 }
 
 #
@@ -39,6 +48,15 @@ function go_to_public () {
     then
         export JSON_TABS=4 # use four-space tabbing in JSON files in a python project
         source env/bin/activate
+    fi
+    if [ -e ".venv/bin/activate" ]
+    then
+        export JSON_TABS=4 # use four-space tabbing in JSON files in a python project
+        source .venv/bin/activate
+    fi
+    if [ -e ".nvmrc" ]
+    then
+        nvm use
     fi
 }
 
